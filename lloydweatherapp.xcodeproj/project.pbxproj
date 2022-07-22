@@ -17,6 +17,7 @@
 		6E438C3C288A8B1A006A6928 /* lloydweatherappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C3B288A8B1A006A6928 /* lloydweatherappTests.swift */; };
 		6E438C46288A8B1A006A6928 /* lloydweatherappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C45288A8B1A006A6928 /* lloydweatherappUITests.swift */; };
 		6E438C48288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C47288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift */; };
+		6E438C57288A99B3006A6928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C56288A99B3006A6928 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		6E438C41288A8B1A006A6928 /* lloydweatherappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lloydweatherappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E438C45288A8B1A006A6928 /* lloydweatherappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lloydweatherappUITests.swift; sourceTree = "<group>"; };
 		6E438C47288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lloydweatherappUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6E438C56288A99B3006A6928 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +103,16 @@
 		6E438C20288A8B11006A6928 /* lloydweatherapp */ = {
 			isa = PBXGroup;
 			children = (
+				6E438C55288A989E006A6928 /* models */,
+				6E438C54288A987D006A6928 /* controller */,
 				6E438C21288A8B11006A6928 /* AppDelegate.swift */,
 				6E438C23288A8B11006A6928 /* SceneDelegate.swift */,
-				6E438C25288A8B11006A6928 /* ViewController.swift */,
 				6E438C27288A8B12006A6928 /* Main.storyboard */,
 				6E438C2D288A8B19006A6928 /* Assets.xcassets */,
 				6E438C2F288A8B19006A6928 /* LaunchScreen.storyboard */,
 				6E438C32288A8B19006A6928 /* Info.plist */,
 				6E438C2A288A8B12006A6928 /* lloydweatherapp.xcdatamodeld */,
+				6E438C56288A99B3006A6928 /* Constants.swift */,
 			);
 			path = lloydweatherapp;
 			sourceTree = "<group>";
@@ -128,6 +132,21 @@
 				6E438C47288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift */,
 			);
 			path = lloydweatherappUITests;
+			sourceTree = "<group>";
+		};
+		6E438C54288A987D006A6928 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6E438C25288A8B11006A6928 /* ViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6E438C55288A989E006A6928 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E438C57288A99B3006A6928 /* Constants.swift in Sources */,
 				6E438C26288A8B11006A6928 /* ViewController.swift in Sources */,
 				6E438C2C288A8B12006A6928 /* lloydweatherapp.xcdatamodeld in Sources */,
 				6E438C22288A8B11006A6928 /* AppDelegate.swift in Sources */,
@@ -459,7 +479,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -486,7 +506,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
