@@ -6,9 +6,11 @@
 //
 
 import UIKit
-import SwiftUI
+import CoreLocation
 
-class MainVC: UIViewController {
+class MainVC: UIViewController{
+    
+    var locationManager : CLLocationManager!
 
     
     @IBOutlet weak var lblWeatherDescription: UILabel!
@@ -26,19 +28,13 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        WeatherCalls.shared.currentWeather(latitude: 47.5001, longitude: -120.5015){
-            result in
-            
-            let currentWeather  = result as! CurrentWeather
-            DispatchQueue.main.async {
-                self.lblMainTemp.text = "\(currentWeather.temp)°"
-                self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
-                self.lblCurrentTemp.text = "\(currentWeather.temp)°"
-                self.lblMinTemp.text = "\(currentWeather.minTemp)°"
-                self.lblWeatherDescription.text = currentWeather.weatherType
-            }
-            
-        }
+        
+        //setUpLocationManager()
+        
+        
+        getWeatherForLocation(lat: 47.5001, lon: -120.5015)
+        
+        
         
         self.view.backgroundColor = UIColor(named : "sea_cloudy_color")
         
@@ -54,6 +50,42 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         currentTempView.constant = view.bounds.height / 2
     }
+    
+    private func getWeatherForLocation(lat : Double,lon : Double ){
+        
+        WeatherCalls.shared.currentWeather(latitude: lat, longitude: lon){
+            result in
+            
+            let currentWeather  = result as! CurrentWeather
+            DispatchQueue.main.async {
+                self.lblMainTemp.text = "\(currentWeather.temp)°"
+                self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
+                self.lblCurrentTemp.text = "\(currentWeather.temp)°"
+                self.lblMinTemp.text = "\(currentWeather.minTemp)°"
+                self.lblWeatherDescription.text = currentWeather.weatherType
+            }
+            
+        }
+        
+    }
 
+}
+extension MainVC : CLLocationManagerDelegate{
+    func setUpLocationManager(){
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let coord : CLLocationCoordinate2D = manager.location!.coordinate
+        
+        getWeatherForLocation(lat: coord.latitude, lon: coord.longitude)
+        
+    }
 }
 

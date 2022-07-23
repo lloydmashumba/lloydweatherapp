@@ -11,35 +11,33 @@ import Foundation
 public class WeatherCalls : CallService{
     
     static let shared = WeatherCalls()
-    public func currentWeather(latitude lat : Float,longitude lon: Float, whenComplete : @escaping (Any)->Void){
+    
+    public func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (CurrentWeather)->Void){
         
         let urlString = String(format: "%@%@?units=metric&lat=%f&lon=%f&appid=%@",
                                BASE_URL,CURRENT_WEATHER,lat,lon,API_KEY)
         
-        let url = URL(string: urlString)
-        
-        var request = URLRequest(url: url!)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        
-        let weatherCall = URLSession.shared.dataTask(with: request) { data, reponse, error in
-            if data != nil {
-                let res = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+        jsonCall(urlString){
+            result in
+            
+            if(result != nil){
                 
-                if(res != nil){
-                    self.callComplete(complete : whenComplete,result: res!,type: .CURRENT)
+                if let resultDict = result as? NSDictionary {
+                    
+                    let currentWeather = CurrentWeather(city: resultDict["name"] as! String,
+                                                                    temp: (resultDict["main"] as! NSDictionary)["temp"] as! Double,
+                                                                    maxTemp: (resultDict["main"] as! NSDictionary)["temp_max"] as! Double,
+                                                                    minTemp: (resultDict["main"] as! NSDictionary)["temp_min"] as! Double,
+                                                                    weatherType : ((resultDict["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String,
+                                                                    cloudPercentage: (resultDict["clouds"] as! NSDictionary)["all"] as! Double
+                                                                    )
+                    complete(currentWeather)
+                    
                 }
                 
-            }else{
-                print("error")
-                print("\(error!)")
             }
         }
-        
-        weatherCall.resume()
-        
-        
+    
     }
     
     

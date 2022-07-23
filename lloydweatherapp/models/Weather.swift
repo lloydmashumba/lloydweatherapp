@@ -16,5 +16,12 @@ public struct CurrentWeather {
     var weatherType : String
     var cloudPercentage : Double
     
+}
+
+public struct Forecast{
+    
+    var day : String
+    var temp : Double
+    var type : String
     
 }

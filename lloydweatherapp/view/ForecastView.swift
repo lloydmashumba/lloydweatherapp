@@ -48,7 +48,6 @@ public class ForecastView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     private func forecastLabel(text value : String) -> UILabel{
         let label = UILabel()
         label.textColor = UIColor.white
