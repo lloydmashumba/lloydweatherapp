@@ -11,12 +11,34 @@ import SwiftUI
 class MainVC: UIViewController {
 
     
+    @IBOutlet weak var lblWeatherDescription: UILabel!
     @IBOutlet weak var currentTempView: NSLayoutConstraint!
-    
     @IBOutlet weak var mainForecastStack: UIStackView!
+    
+    @IBOutlet weak var lblMainTemp: UILabel!
+    
+    @IBOutlet weak var lblMinTemp: UILabel!
+    
+    @IBOutlet weak var lblCurrentTemp: UILabel!
+    @IBOutlet weak var lblMaxTemp: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        WeatherCalls.shared.currentWeather(latitude: 47.5001, longitude: -120.5015){
+            result in
+            
+            let currentWeather  = result as! CurrentWeather
+            DispatchQueue.main.async {
+                self.lblMainTemp.text = "\(currentWeather.temp)°"
+                self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
+                self.lblCurrentTemp.text = "\(currentWeather.temp)°"
+                self.lblMinTemp.text = "\(currentWeather.minTemp)°"
+                self.lblWeatherDescription.text = currentWeather.weatherType
+            }
+            
+        }
         
         self.view.backgroundColor = UIColor(named : "sea_cloudy_color")
         

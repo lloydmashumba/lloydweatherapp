@@ -66,6 +66,7 @@ public class ForecastView : UIView {
         iconView.translatesAutoresizingMaskIntoConstraints = false
         
         iconView.image = UIImage(named: icon)
+        iconView.contentMode = .scaleAspectFit
         
         iconView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         iconView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
