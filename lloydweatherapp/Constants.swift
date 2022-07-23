@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+//DOMAIN
+let BASE_URL = ""
+
+//
+
