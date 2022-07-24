@@ -6,34 +6,37 @@
 //
 
 import Foundation
-enum CallType{ case CURRENT,FORECAST}
 
 @objc
 protocol CallService {
-    @objc optional func currentWeather(latitude lat : Float,longitude lon: Float, whenComplete : @escaping (Any)->Void)
+    @objc optional func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (Any)->Void)
+    @objc optional func forecast(latitude lat : Double,longitude lon: Double, complete : @escaping (Any)->Void)
     
 }
 
 extension CallService{
     
-    func callComplete(complete : (Any)->Void, result : NSDictionary,type : CallType){
+    
+    internal func jsonCall(_ url :  String,handler done : @escaping (Any?)->Void){
+        let url = URL(string: url)
         
-        switch type {
-        case .CURRENT:
-            let currentWeather = CurrentWeather(city: result["name"] as! String,
-                                                temp: (result["main"] as! NSDictionary)["temp"] as! Double,
-                                                maxTemp: (result["main"] as! NSDictionary)["temp_max"] as! Double,
-                                                minTemp: (result["main"] as! NSDictionary)["temp_min"] as! Double,
-                                                weatherType : ((result["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String,
-                                                cloudPercentage: (result["clouds"] as! NSDictionary)["all"] as! Double
-                                                )
-            
-            complete(currentWeather)
-            
-            break
-        case .FORECAST:
-            print("not yet")
+        var request = URLRequest(url: url!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let weatherCall = URLSession.shared.dataTask(with: request) { data, reponse, error in
+            if data != nil {
+                let res = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                
+                done(res)
+                
+            }else{
+                print("\(error!)")
+                done(nil)
+            }
         }
         
+        weatherCall.resume()
     }
+    
 }
+

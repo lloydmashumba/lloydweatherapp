@@ -11,13 +11,10 @@ import UIKit
 public class ForecastView : UIView {
     
     let foreCastDetailsStack = UIStackView()
-    private var day : String
-    private var image : String!
-    var temperature : Int
+    private var forecast : Forecast
     
-    public init(frame: CGRect,day : String,temperature : Int) {
-        self.day = day
-        self.temperature = temperature
+    public init(frame: CGRect,forecast : Forecast) {
+        self.forecast = forecast
         super.init(frame: frame)
         createView()
     }
@@ -36,10 +33,13 @@ public class ForecastView : UIView {
         
         let forecastIconView = UIView()
         
+        
+        let day = DAYS_OF_WEEK[Calendar(identifier: .gregorian).component(.weekday, from: forecast.day) - 1]
+        
         foreCastDetailsStack.addArrangedSubview(forecastLabel(text: day))
         foreCastDetailsStack.addArrangedSubview(forecastIconView)
         forecastIconSetup(view : forecastIconView,icon: "clear")
-        foreCastDetailsStack.addArrangedSubview(forecastLabel(text: "\(temperature)"))
+        foreCastDetailsStack.addArrangedSubview(forecastLabel(text: "\(forecast.temp)°"))
         
         layoutSubviews()
     }

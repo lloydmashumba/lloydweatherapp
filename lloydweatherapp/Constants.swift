@@ -14,4 +14,9 @@ let BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
 //ENDPOINTS
 let CURRENT_WEATHER = "weather"
+let FORECAST = "forecast"
+
+
+
+let DAYS_OF_WEEK = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 

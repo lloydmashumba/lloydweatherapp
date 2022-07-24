@@ -32,18 +32,12 @@ class MainVC: UIViewController{
         //setUpLocationManager()
         
         
-        getWeatherForLocation(lat: 47.5001, lon: -120.5015)
+        getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
+        getForecastForLocation(lat: 47.5001, lon: -120.5015)
         
         
         
         self.view.backgroundColor = UIColor(named : "sea_cloudy_color")
-        
-        let days = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
-        
-        
-        for i in 0...(days.count - 1) {
-            mainForecastStack.addArrangedSubview(ForecastView(frame: CGRect.zero,day: days[i],temperature: 45))
-        }
         
     }
     
@@ -51,23 +45,52 @@ class MainVC: UIViewController{
         currentTempView.constant = view.bounds.height / 2
     }
     
-    private func getWeatherForLocation(lat : Double,lon : Double ){
+    private func getCurrentWeatherForLocation(lat : Double,lon : Double ){
         
         WeatherCalls.shared.currentWeather(latitude: lat, longitude: lon){
-            result in
+            result  in
             
-            let currentWeather  = result as! CurrentWeather
-            DispatchQueue.main.async {
-                self.lblMainTemp.text = "\(currentWeather.temp)°"
-                self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
-                self.lblCurrentTemp.text = "\(currentWeather.temp)°"
-                self.lblMinTemp.text = "\(currentWeather.minTemp)°"
-                self.lblWeatherDescription.text = currentWeather.weatherType
+            if let currentWeather = result as? CurrentWeather {
+                DispatchQueue.main.async {
+                    self.lblMainTemp.text = "\(currentWeather.temp)°"
+                    self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
+                    self.lblCurrentTemp.text = "\(currentWeather.temp)°"
+                    self.lblMinTemp.text = "\(currentWeather.minTemp)°"
+                    self.lblWeatherDescription.text = currentWeather.weatherType
+                }
             }
             
         }
         
     }
+    private func getForecastForLocation(lat : Double,lon : Double){
+        
+        WeatherCalls.shared.forecast(latitude: lat, longitude: lon){
+            result in
+            
+            if let forecastList = result as? [Forecast] {
+                
+                let forecastDict = Dictionary(grouping: forecastList, by: {
+                    Calendar(identifier: .gregorian).component(.weekday, from: $0.day)
+                }).filter{
+                    $0.key != Calendar(identifier: .gregorian).component(.weekday, from: Date.now)}
+                    
+                DispatchQueue.main.async {
+                    for i in forecastDict.keys.sorted() {
+                        
+                        let forecast = forecastDict[i]![0]
+                        self.mainForecastStack.addArrangedSubview(ForecastView(frame: CGRect.zero,
+                                                                               forecast: forecast))
+                        
+                    }
+                }
+                
+            }
+                
+        }
+        
+    }
+    
 
 }
 extension MainVC : CLLocationManagerDelegate{
@@ -84,7 +107,7 @@ extension MainVC : CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let coord : CLLocationCoordinate2D = manager.location!.coordinate
         
-        getWeatherForLocation(lat: coord.latitude, lon: coord.longitude)
+        getCurrentWeatherForLocation(lat: coord.latitude, lon: coord.longitude)
         
     }
 }

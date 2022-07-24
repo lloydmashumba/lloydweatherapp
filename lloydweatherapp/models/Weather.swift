@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 public struct CurrentWeather {
     
     var city : String
@@ -20,7 +21,7 @@ public struct CurrentWeather {
 
 public struct Forecast{
     
-    var day : String
+    var day : Date
     var temp : Double
     var type : String
     
