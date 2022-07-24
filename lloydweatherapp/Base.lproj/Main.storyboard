@@ -22,7 +22,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxe-WK-mvB">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sea_cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="8wT-7E-rGx">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8wT-7E-rGx">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa1-la-QEv">
@@ -196,6 +196,7 @@
                     <size key="freeformSize" width="300" height="500"/>
                     <connections>
                         <outlet property="currentTempView" destination="Gdt-GT-kXP" id="Hwd-VY-3iF"/>
+                        <outlet property="imgWeatherBackground" destination="8wT-7E-rGx" id="xpb-RJ-4Tg"/>
                         <outlet property="lblCurrentTemp" destination="NPZ-ht-Y6E" id="FSF-OQ-eFm"/>
                         <outlet property="lblMainTemp" destination="cO3-jm-oFq" id="Haz-XD-fN9"/>
                         <outlet property="lblMaxTemp" destination="elZ-1n-c9C" id="a3s-ob-oBO"/>
@@ -211,7 +212,6 @@
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="sea_cloudy" width="360" height="320"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

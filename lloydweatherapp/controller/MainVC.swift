@@ -8,10 +8,13 @@
 import UIKit
 import CoreLocation
 
+
+
 class MainVC: UIViewController{
     
     var locationManager : CLLocationManager!
 
+    @IBOutlet weak var imgWeatherBackground: UIImageView!
     
     @IBOutlet weak var lblWeatherDescription: UILabel!
     @IBOutlet weak var currentTempView: NSLayoutConstraint!
@@ -28,21 +31,20 @@ class MainVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //setUpLocationManager()
-        
-        
         getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
         getForecastForLocation(lat: 47.5001, lon: -120.5015)
-        
-        
-        
-        self.view.backgroundColor = UIColor(named : "sea_cloudy_color")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         currentTempView.constant = view.bounds.height / 2
+    }
+    
+    func viewBasedOnWeather(_ type : WeatherType){
+        
+        let weatherView = BACKGROUND_THEMES[type]!
+        self.view.backgroundColor = UIColor(named : weatherView[.COLOR]!)
+        self.imgWeatherBackground.image = UIImage(named: weatherView[.IMAGE]!)
     }
     
     private func getCurrentWeatherForLocation(lat : Double,lon : Double ){
@@ -56,7 +58,8 @@ class MainVC: UIViewController{
                     self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"
                     self.lblCurrentTemp.text = "\(currentWeather.temp)°"
                     self.lblMinTemp.text = "\(currentWeather.minTemp)°"
-                    self.lblWeatherDescription.text = currentWeather.weatherType
+                    self.lblWeatherDescription.text = "\(currentWeather.weatherType)"
+                    self.viewBasedOnWeather(currentWeather.weatherType)
                 }
             }
             
@@ -81,7 +84,6 @@ class MainVC: UIViewController{
                         let forecast = forecastDict[i]![0]
                         self.mainForecastStack.addArrangedSubview(ForecastView(frame: CGRect.zero,
                                                                                forecast: forecast))
-                        
                     }
                 }
                 
@@ -91,7 +93,6 @@ class MainVC: UIViewController{
         
     }
     
-
 }
 extension MainVC : CLLocationManagerDelegate{
     func setUpLocationManager(){

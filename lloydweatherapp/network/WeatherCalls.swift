@@ -8,6 +8,8 @@
 import Foundation
 
 
+enum WeatherType {case CLOUDY,SUNNY,RAINNY}
+
 public class WeatherCalls : CallService{
     
     static let shared = WeatherCalls()
@@ -60,7 +62,7 @@ public class WeatherCalls : CallService{
                                                                 temp: (resultDict["main"] as! NSDictionary)["temp"] as! Double,
                                                                 maxTemp: (resultDict["main"] as! NSDictionary)["temp_max"] as! Double,
                                                                 minTemp: (resultDict["main"] as! NSDictionary)["temp_min"] as! Double,
-                                                                weatherType : ((resultDict["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String,
+                                                    weatherType : self.determineWeatherType(s: ((resultDict["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String),
                                                                 cloudPercentage: (resultDict["clouds"] as! NSDictionary)["all"] as! Double
                                                                 )
                 complete(currentWeather)
@@ -70,6 +72,9 @@ public class WeatherCalls : CallService{
     
     }
     
+    func determineWeatherType(s : String) -> WeatherType{
+        return s == "Clouds" ? .CLOUDY : s == "Clear" ? .SUNNY : .RAINNY
+    }
     
     
 }

@@ -117,12 +117,12 @@
 				6E438C54288A987D006A6928 /* controller */,
 				6E438C21288A8B11006A6928 /* AppDelegate.swift */,
 				6E438C23288A8B11006A6928 /* SceneDelegate.swift */,
+				6E438C56288A99B3006A6928 /* Constants.swift */,
 				6E438C27288A8B12006A6928 /* Main.storyboard */,
 				6E438C2D288A8B19006A6928 /* Assets.xcassets */,
 				6E438C2F288A8B19006A6928 /* LaunchScreen.storyboard */,
 				6E438C32288A8B19006A6928 /* Info.plist */,
 				6E438C2A288A8B12006A6928 /* lloydweatherapp.xcdatamodeld */,
-				6E438C56288A99B3006A6928 /* Constants.swift */,
 			);
 			path = lloydweatherapp;
 			sourceTree = "<group>";

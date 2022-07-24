@@ -14,8 +14,11 @@ public struct CurrentWeather {
     var temp : Double
     var maxTemp : Double
     var minTemp : Double
-    var weatherType : String
+    var weatherType : WeatherType
     var cloudPercentage : Double
+    
+    
+    
     
 }
 
