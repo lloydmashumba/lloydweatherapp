@@ -18,27 +18,27 @@ let CURRENT_WEATHER = "weather"
 let FORECAST = "forecast"
 
 // MARK : ENUMS
-enum BACKGROUN_ASSET {case IMAGE,COLOR}
+enum BACKGROUND_ASSET {case IMAGE,COLOR}
 
 
 // MARK : LIST ITEMS
 let DAYS_OF_WEEK = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-let BACKGROUND_THEMES : [WeatherType:[BACKGROUN_ASSET:String]] =
+let BACKGROUND_THEMES : [WeatherType:[BACKGROUND_ASSET:String]] =
 [
     .CLOUDY:
         [
-            .IMAGE : "sea_cloudy",
-            .COLOR : "sea_cloudy_color"
+            .IMAGE : "forest_cloudy",
+            .COLOR : "forest_cloudy_color"
         ],
     .RAINNY :
         [
-            .IMAGE: "sea_rainy",
-            .COLOR : "sea_rainy_color"
+            .IMAGE: "forest_rainy",
+            .COLOR : "forest_rainy_color"
         ],
     .SUNNY:
         [
-            .IMAGE : "sea_sunny",
-            .COLOR : "sea_sunny_color"
+            .IMAGE : "forest_sunny",
+            .COLOR : "forest_sunny_color"
         ]
     
 ]

@@ -37,6 +37,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" image="list.dash" catalog="system">
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="btnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hEU-kI-6be"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -207,11 +210,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-175" y="-81"/>
+            <point key="canvasLocation" x="-691" y="-80"/>
+        </scene>
+        <!--Saved Location-->
+        <scene sceneID="xEZ-PR-NYb">
+            <objects>
+                <viewController storyboardIdentifier="SavedListVC" id="DVq-dP-JHk" customClass="SavedListVC" customModule="lloydweatherapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7i7-AZ-jo3">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5X-Ki-OyK">
+                                <rect key="frame" x="31" y="246" width="300" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NcE-ag-Cjd">
+                                <rect key="frame" x="20" y="64" width="260" height="416"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19f-QI-met">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="44"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem title="Favourite Locations" id="Iud-yj-2ku">
+                                                <barButtonItem key="rightBarButtonItem" image="xmark" catalog="system" id="2cc-JL-qFd"/>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-La-1Bg">
+                                        <rect key="frame" x="4" y="44" width="252" height="368"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="DVq-dP-JHk" id="gc5-lH-fyP"/>
+                                            <outlet property="delegate" destination="DVq-dP-JHk" id="37b-04-QGx"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PcE-La-1Bg" secondAttribute="bottom" constant="4" id="P7e-pX-4nm"/>
+                                    <constraint firstAttribute="trailing" secondItem="19f-QI-met" secondAttribute="trailing" id="ZIL-tj-8ja"/>
+                                    <constraint firstAttribute="trailing" secondItem="PcE-La-1Bg" secondAttribute="trailing" constant="4" id="a1G-cX-8pR"/>
+                                    <constraint firstItem="19f-QI-met" firstAttribute="top" secondItem="NcE-ag-Cjd" secondAttribute="top" id="d4D-0y-aXc"/>
+                                    <constraint firstItem="PcE-La-1Bg" firstAttribute="leading" secondItem="NcE-ag-Cjd" secondAttribute="leading" constant="4" id="lz7-AP-x3i"/>
+                                    <constraint firstItem="19f-QI-met" firstAttribute="leading" secondItem="NcE-ag-Cjd" secondAttribute="leading" symbolic="YES" id="p44-5b-iRc"/>
+                                    <constraint firstItem="PcE-La-1Bg" firstAttribute="top" secondItem="19f-QI-met" secondAttribute="bottom" id="tdg-Gn-uvp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3hT-c7-RCY"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NcE-ag-Cjd" firstAttribute="leading" secondItem="3hT-c7-RCY" secondAttribute="leading" constant="20" id="0Ez-bf-yR0"/>
+                            <constraint firstItem="3hT-c7-RCY" firstAttribute="trailing" secondItem="NcE-ag-Cjd" secondAttribute="trailing" constant="20" id="5Lu-jY-MHi"/>
+                            <constraint firstItem="NcE-ag-Cjd" firstAttribute="top" secondItem="3hT-c7-RCY" secondAttribute="top" constant="20" id="9T9-yT-zCd"/>
+                            <constraint firstItem="3hT-c7-RCY" firstAttribute="bottom" secondItem="NcE-ag-Cjd" secondAttribute="bottom" constant="20" id="oPL-3b-WdW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Saved Location" id="9zP-Ox-bo5"/>
+                    <size key="freeformSize" width="300" height="500"/>
+                    <connections>
+                        <outlet property="savedListTable" destination="PcE-La-1Bg" id="D3z-fl-eZj"/>
+                        <outlet property="tableContainer" destination="NcE-ag-Cjd" id="GOp-z7-Ijf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Dj-br-nhx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-200" y="-80"/>
         </scene>
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

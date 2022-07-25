@@ -2,12 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationUsageDescription</key>
-	<string>The app&apos;s Info.plist must contain both “NSLocationAlwaysAndWhenInUseUsageDescription” and “NSLocationWhenInUseUsageDescription” keys with string values explaining to the user how the app uses this data</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To update you on the current weather at your location.Allow the app to access your location?</string>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ho</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To update you on the current weather at your location.Allow the app to access your location?</string>
+	<string>ok</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

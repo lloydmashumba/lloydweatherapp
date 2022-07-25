@@ -13,6 +13,7 @@ import CoreLocation
 class MainVC: UIViewController{
     
     var locationManager : CLLocationManager!
+    var themeColor : UIColor!
 
     @IBOutlet weak var imgWeatherBackground: UIImageView!
     
@@ -31,8 +32,9 @@ class MainVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
-        getForecastForLocation(lat: 47.5001, lon: -120.5015)
+        setUpLocationManager()
+        //getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
+        //getForecastForLocation(lat: 47.5001, lon: -120.5015)
         
     }
     
@@ -43,10 +45,21 @@ class MainVC: UIViewController{
     func viewBasedOnWeather(_ type : WeatherType){
         
         let weatherView = BACKGROUND_THEMES[type]!
-        self.view.backgroundColor = UIColor(named : weatherView[.COLOR]!)
+        themeColor = UIColor(named : weatherView[.COLOR]!)
+        self.view.backgroundColor = themeColor
         self.imgWeatherBackground.image = UIImage(named: weatherView[.IMAGE]!)
     }
     
+    @IBAction func btnTapped(_ sender: UIButton) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SavedListVC") as! SavedListVC
+        vc.themeColor = themeColor
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        
+        present(vc, animated: true, completion: nil)
+        
+    }
     private func getCurrentWeatherForLocation(lat : Double,lon : Double ){
         
         WeatherCalls.shared.currentWeather(latitude: lat, longitude: lon){
@@ -101,7 +114,6 @@ extension MainVC : CLLocationManagerDelegate{
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        
         locationManager.startUpdatingLocation()
     }
     

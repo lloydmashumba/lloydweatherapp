@@ -22,6 +22,10 @@
 		6EBCAFB2288BF62B00ED37A9 /* WeatherCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB1288BF62A00ED37A9 /* WeatherCalls.swift */; };
 		6EBCAFB4288BF77600ED37A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB3288BF77600ED37A9 /* Weather.swift */; };
 		6EBCAFB6288C2AEA00ED37A9 /* CallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */; };
+		6EBCAFC1288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */; };
+		6EBCAFC2288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */; };
+		6EBCAFC4288D8F5300ED37A9 /* SavedListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */; };
+		6EBCAFC6288DAA1100ED37A9 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		6EBCAFB1288BF62A00ED37A9 /* WeatherCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCalls.swift; sourceTree = "<group>"; };
 		6EBCAFB3288BF77600ED37A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallService.swift; sourceTree = "<group>"; };
+		6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListVC.swift; sourceTree = "<group>"; };
+		6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +119,7 @@
 		6E438C20288A8B11006A6928 /* lloydweatherapp */ = {
 			isa = PBXGroup;
 			children = (
+				6EBCAFBE288D890A00ED37A9 /* db */,
 				6EBCAFB0288BF5E400ED37A9 /* network */,
 				6EBCAFA9288B4AF900ED37A9 /* view */,
 				6E438C55288A989E006A6928 /* models */,
@@ -148,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				6E438C25288A8B11006A6928 /* MainVC.swift */,
+				6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				6EBCAFAE288BC14700ED37A9 /* ForecastView.swift */,
+				6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -175,6 +186,15 @@
 				6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */,
 			);
 			path = network;
+			sourceTree = "<group>";
+		};
+		6EBCAFBE288D890A00ED37A9 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */,
+				6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */,
+			);
+			path = db;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +334,10 @@
 				6EBCAFB2288BF62B00ED37A9 /* WeatherCalls.swift in Sources */,
 				6E438C2C288A8B12006A6928 /* lloydweatherapp.xcdatamodeld in Sources */,
 				6E438C22288A8B11006A6928 /* AppDelegate.swift in Sources */,
+				6EBCAFC6288DAA1100ED37A9 /* SavedLocationsView.swift in Sources */,
+				6EBCAFC2288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift in Sources */,
+				6EBCAFC1288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift in Sources */,
+				6EBCAFC4288D8F5300ED37A9 /* SavedListVC.swift in Sources */,
 				6E438C24288A8B11006A6928 /* SceneDelegate.swift in Sources */,
 				6EBCAFAF288BC14700ED37A9 /* ForecastView.swift in Sources */,
 				6EBCAFB6288C2AEA00ED37A9 /* CallService.swift in Sources */,
