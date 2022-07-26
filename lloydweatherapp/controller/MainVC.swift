@@ -14,7 +14,13 @@ class MainVC: UIViewController{
     
     var locationManager : CLLocationManager!
     var themeColor : UIColor!
-
+    let locationRepo = SavedLocationService.shared
+    var currentLatitude : Double!
+    var currentLongitude : Double!
+    var currentWeather : CurrentWeather!
+    var currentForecastList = [Forecast]()
+    @IBOutlet weak var btnSaveLocation: UIButton!
+    
     @IBOutlet weak var imgWeatherBackground: UIImageView!
     
     @IBOutlet weak var lblWeatherDescription: UILabel!
@@ -32,14 +38,14 @@ class MainVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpLocationManager()
-        //getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
-        //getForecastForLocation(lat: 47.5001, lon: -120.5015)
+        //setUpLocationManager()
+        getCurrentWeatherForLocation(lat: 47.5001, lon: -120.5015)
+        getForecastForLocation(lat: 47.5001, lon: -120.5015)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        currentTempView.constant = view.bounds.height / 2
+        currentTempView.constant = view.bounds.height / 2.5
     }
     
     func viewBasedOnWeather(_ type : WeatherType){
@@ -52,12 +58,28 @@ class MainVC: UIViewController{
     
     @IBAction func btnTapped(_ sender: UIButton) {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SavedListVC") as! SavedListVC
-        vc.themeColor = themeColor
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overCurrentContext
-        
-        present(vc, animated: true, completion: nil)
+        switch sender.tag {
+            case 1 :
+                let vc = storyboard?.instantiateViewController(withIdentifier: "SavedListVC") as! SavedListVC
+                vc.themeColor = themeColor
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                present(vc, animated: true, completion: nil)
+                break
+            case 2:
+            locationRepo.saveLocationFor(lat: currentLatitude, lon: currentLongitude, weather: currentWeather){
+                saved in
+                
+                if(saved){
+                    locationRepo.getAllSavedLocations(){
+                        locationList in print(locationList)
+                    }
+                }
+            }
+                
+                break
+            default : break
+        }
         
     }
     private func getCurrentWeatherForLocation(lat : Double,lon : Double ){
@@ -66,6 +88,9 @@ class MainVC: UIViewController{
             result  in
             
             if let currentWeather = result as? CurrentWeather {
+                self.currentLatitude = lat
+                self.currentLongitude = lon
+                self.currentWeather = currentWeather
                 DispatchQueue.main.async {
                     self.lblMainTemp.text = "\(currentWeather.temp)°"
                     self.lblMaxTemp.text = "\(currentWeather.maxTemp)°"

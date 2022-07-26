@@ -11,5 +11,7 @@ import CoreData
 
 @objc(SavedLocation)
 public class SavedLocation: NSManagedObject {
-
+    
 }
+
+

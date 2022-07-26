@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+let appdelegate = UIApplication.shared.delegate as! AppDelegate
 
 // MARK : KEYS
 let API_KEY = "1e8055ffb2635e34dd169d92bca3f972"
