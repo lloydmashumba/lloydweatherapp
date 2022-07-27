@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E055A552890C13D005022BA /* ProgressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E055A542890C13C005022BA /* ProgressVC.swift */; };
 		6E438C22288A8B11006A6928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C21288A8B11006A6928 /* AppDelegate.swift */; };
 		6E438C24288A8B11006A6928 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C23288A8B11006A6928 /* SceneDelegate.swift */; };
-		6E438C26288A8B11006A6928 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C25288A8B11006A6928 /* ViewController.swift */; };
+		6E438C26288A8B11006A6928 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C25288A8B11006A6928 /* MainVC.swift */; };
 		6E438C29288A8B12006A6928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E438C27288A8B12006A6928 /* Main.storyboard */; };
 		6E438C2C288A8B12006A6928 /* lloydweatherapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C2A288A8B12006A6928 /* lloydweatherapp.xcdatamodeld */; };
 		6E438C2E288A8B19006A6928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E438C2D288A8B19006A6928 /* Assets.xcassets */; };
@@ -18,6 +19,15 @@
 		6E438C46288A8B1A006A6928 /* lloydweatherappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C45288A8B1A006A6928 /* lloydweatherappUITests.swift */; };
 		6E438C48288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C47288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift */; };
 		6E438C57288A99B3006A6928 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E438C56288A99B3006A6928 /* Constants.swift */; };
+		6EBCAFAF288BC14700ED37A9 /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFAE288BC14700ED37A9 /* ForecastView.swift */; };
+		6EBCAFB2288BF62B00ED37A9 /* WeatherCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB1288BF62A00ED37A9 /* WeatherCalls.swift */; };
+		6EBCAFB4288BF77600ED37A9 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB3288BF77600ED37A9 /* Weather.swift */; };
+		6EBCAFB6288C2AEA00ED37A9 /* CallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */; };
+		6EBCAFC1288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */; };
+		6EBCAFC2288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */; };
+		6EBCAFC4288D8F5300ED37A9 /* SavedListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */; };
+		6EBCAFC6288DAA1100ED37A9 /* SavedLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */; };
+		6EBCAFCA288F87BC00ED37A9 /* SavedLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBCAFC9288F87BC00ED37A9 /* SavedLocationRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E055A542890C13C005022BA /* ProgressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressVC.swift; sourceTree = "<group>"; };
 		6E438C1E288A8B11006A6928 /* lloydweatherapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lloydweatherapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E438C21288A8B11006A6928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E438C23288A8B11006A6928 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6E438C25288A8B11006A6928 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6E438C25288A8B11006A6928 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		6E438C28288A8B12006A6928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6E438C2B288A8B12006A6928 /* lloydweatherapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = lloydweatherapp.xcdatamodel; sourceTree = "<group>"; };
 		6E438C2D288A8B19006A6928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +64,15 @@
 		6E438C45288A8B1A006A6928 /* lloydweatherappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lloydweatherappUITests.swift; sourceTree = "<group>"; };
 		6E438C47288A8B1A006A6928 /* lloydweatherappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lloydweatherappUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6E438C56288A99B3006A6928 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6EBCAFAE288BC14700ED37A9 /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		6EBCAFB1288BF62A00ED37A9 /* WeatherCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCalls.swift; sourceTree = "<group>"; };
+		6EBCAFB3288BF77600ED37A9 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallService.swift; sourceTree = "<group>"; };
+		6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedLocation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedLocation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListVC.swift; sourceTree = "<group>"; };
+		6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationsView.swift; sourceTree = "<group>"; };
+		6EBCAFC9288F87BC00ED37A9 /* SavedLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedLocationRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,16 +123,19 @@
 		6E438C20288A8B11006A6928 /* lloydweatherapp */ = {
 			isa = PBXGroup;
 			children = (
+				6EBCAFBE288D890A00ED37A9 /* db */,
+				6EBCAFB0288BF5E400ED37A9 /* network */,
+				6EBCAFA9288B4AF900ED37A9 /* view */,
 				6E438C55288A989E006A6928 /* models */,
 				6E438C54288A987D006A6928 /* controller */,
 				6E438C21288A8B11006A6928 /* AppDelegate.swift */,
 				6E438C23288A8B11006A6928 /* SceneDelegate.swift */,
+				6E438C56288A99B3006A6928 /* Constants.swift */,
 				6E438C27288A8B12006A6928 /* Main.storyboard */,
 				6E438C2D288A8B19006A6928 /* Assets.xcassets */,
 				6E438C2F288A8B19006A6928 /* LaunchScreen.storyboard */,
 				6E438C32288A8B19006A6928 /* Info.plist */,
 				6E438C2A288A8B12006A6928 /* lloydweatherapp.xcdatamodeld */,
-				6E438C56288A99B3006A6928 /* Constants.swift */,
 			);
 			path = lloydweatherapp;
 			sourceTree = "<group>";
@@ -137,7 +160,9 @@
 		6E438C54288A987D006A6928 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E438C25288A8B11006A6928 /* ViewController.swift */,
+				6E438C25288A8B11006A6928 /* MainVC.swift */,
+				6EBCAFC3288D8F5300ED37A9 /* SavedListVC.swift */,
+				6E055A542890C13C005022BA /* ProgressVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -145,8 +170,37 @@
 		6E438C55288A989E006A6928 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				6EBCAFB3288BF77600ED37A9 /* Weather.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		6EBCAFA9288B4AF900ED37A9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCAFAE288BC14700ED37A9 /* ForecastView.swift */,
+				6EBCAFC5288DAA1100ED37A9 /* SavedLocationsView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6EBCAFB0288BF5E400ED37A9 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCAFB1288BF62A00ED37A9 /* WeatherCalls.swift */,
+				6EBCAFB5288C2AEA00ED37A9 /* CallService.swift */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		6EBCAFBE288D890A00ED37A9 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				6EBCAFBF288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift */,
+				6EBCAFC0288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift */,
+				6EBCAFC9288F87BC00ED37A9 /* SavedLocationRepository.swift */,
+			);
+			path = db;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,10 +335,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E438C57288A99B3006A6928 /* Constants.swift in Sources */,
-				6E438C26288A8B11006A6928 /* ViewController.swift in Sources */,
+				6E438C26288A8B11006A6928 /* MainVC.swift in Sources */,
+				6EBCAFB4288BF77600ED37A9 /* Weather.swift in Sources */,
+				6EBCAFB2288BF62B00ED37A9 /* WeatherCalls.swift in Sources */,
+				6EBCAFCA288F87BC00ED37A9 /* SavedLocationRepository.swift in Sources */,
+				6E055A552890C13D005022BA /* ProgressVC.swift in Sources */,
 				6E438C2C288A8B12006A6928 /* lloydweatherapp.xcdatamodeld in Sources */,
 				6E438C22288A8B11006A6928 /* AppDelegate.swift in Sources */,
+				6EBCAFC6288DAA1100ED37A9 /* SavedLocationsView.swift in Sources */,
+				6EBCAFC2288D892E00ED37A9 /* SavedLocation+CoreDataProperties.swift in Sources */,
+				6EBCAFC1288D892E00ED37A9 /* SavedLocation+CoreDataClass.swift in Sources */,
+				6EBCAFC4288D8F5300ED37A9 /* SavedListVC.swift in Sources */,
 				6E438C24288A8B11006A6928 /* SceneDelegate.swift in Sources */,
+				6EBCAFAF288BC14700ED37A9 /* ForecastView.swift in Sources */,
+				6EBCAFB6288C2AEA00ED37A9 /* CallService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +527,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVYMG733L2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lloydweatherapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,6 +555,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JVYMG733L2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lloydweatherapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
