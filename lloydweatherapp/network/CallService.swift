@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 @objc
 protocol CallService {
-    @objc optional func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (Any)->Void)
-    @objc optional func forecast(latitude lat : Double,longitude lon: Double, complete : @escaping (Any)->Void)
+    @objc optional func currentWeather(context : UIViewController,latitude lat : Double,longitude lon: Double, complete : @escaping (Any?)->Void)
+    @objc optional func forecast(latitude lat : Double,longitude lon: Double, complete : @escaping (Any?)->Void)
     
 }
 
@@ -30,7 +31,7 @@ extension CallService{
                 done(res)
                 
             }else{
-                print("\(error!)")
+                print("network error")
                 done(nil)
             }
         }

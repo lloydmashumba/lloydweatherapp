@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol SavedListDelegate {
+    func didSelectLocation(location : SavedLocation)
+}
+
+
 class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var bar: UINavigationBar!
     
     var themeColor : UIColor!
     @IBOutlet weak var tableContainer: UIView!
+    
+    var delegate : SavedListDelegate!
     
     @IBOutlet weak var savedListTable: UITableView!
     
@@ -31,7 +38,6 @@ class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         locationRepository.getAllSavedLocations(){
             locationList in
-            
             self.locationList = locationList
             savedListTable.reloadData()
         }
@@ -50,35 +56,42 @@ class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let location = locationList[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "location")!
+        let savedLocationView = SavedLocationsView(frame: cell.contentView.bounds,location: location)
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
-        cellView(cell: cell,location: location)
+        cell.contentView.addSubview(savedLocationView)
         
         return cell
             
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        dismiss(animated: true){ [self] in
+            self.delegate.didSelectLocation(location: locationList[indexPath.row])
+        }
     }
     
-    
-    func cellView(cell : UITableViewCell,location : SavedLocation){
-        let savedLocationContent = UIView()
-        savedLocationContent.backgroundColor = .clear
-        savedLocationContent.frame = cell.contentView.bounds
-        cell.contentView.addSubview(savedLocationContent)
-        
-        let citylbl = UILabel()
-        citylbl.frame = savedLocationContent.bounds
-        savedLocationContent.addSubview(citylbl)
-        citylbl.text = location.city
-        citylbl.textColor = .white
-    
-        //cell.layoutSubviews()
-        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
-
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            locationRepository.deleteLocation(location:locationList[indexPath.row]){
+                deleted in
+                if(deleted){
+                    locationRepository.getAllSavedLocations(){
+                        locationList in
+                        self.locationList = locationList
+                        savedListTable.reloadData()
+                    }
+                }
+            }
+        }
+    }
+    
 }
 

@@ -8,14 +8,14 @@
 import Foundation
 
 
-enum WeatherType {case CLOUDY,SUNNY,RAINNY}
+enum WeatherType {case CLOUDY,SUNNY,RAINNY,DEFAULT}
 
 public class WeatherCalls : CallService{
     
     static let shared = WeatherCalls()
     
     
-    func forecast(latitude lat: Double, longitude lon: Double, complete: @escaping (Any) -> Void) {
+    func forecast(latitude lat: Double, longitude lon: Double, complete: @escaping (Any?) -> Void) {
         let urlString = String(format: "%@%@?units=metric&lat=%f&lon=%f&appid=%@",
                                BASE_URL,FORECAST,lat,lon,API_KEY)
         
@@ -46,11 +46,13 @@ public class WeatherCalls : CallService{
                         complete(foreCastList)
                     }
                 
-            }
+                }else{
+                    complete(nil)
+                }
         }
     }
     
-    public func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (Any)->Void){
+    public func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (Any?)->Void){
         
         let urlString = String(format: "%@%@?units=metric&lat=%f&lon=%f&appid=%@",
                                BASE_URL,CURRENT_WEATHER,lat,lon,API_KEY)
@@ -62,18 +64,17 @@ public class WeatherCalls : CallService{
                                                                 temp: (resultDict["main"] as! NSDictionary)["temp"] as! Double,
                                                                 maxTemp: (resultDict["main"] as! NSDictionary)["temp_max"] as! Double,
                                                                 minTemp: (resultDict["main"] as! NSDictionary)["temp_min"] as! Double,
-                                                    weatherType : self.determineWeatherType(s: ((resultDict["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String),
+                                                    weatherType : determineWeatherType(s: ((resultDict["weather"] as! NSArray)[0] as! NSDictionary)["main"] as! String),
                                                                 cloudPercentage: (resultDict["clouds"] as! NSDictionary)["all"] as! Double
                                                                 )
                 complete(currentWeather)
                 
             }
+            else{
+                complete(nil)
+            }
         }
     
-    }
-    
-    func determineWeatherType(s : String) -> WeatherType{
-        return s == "Clouds" ? .CLOUDY : s == "Clear" ? .SUNNY : .RAINNY
     }
     
     

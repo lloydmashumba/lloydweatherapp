@@ -38,7 +38,8 @@ public class ForecastView : UIView {
         
         foreCastDetailsStack.addArrangedSubview(forecastLabel(text: day))
         foreCastDetailsStack.addArrangedSubview(forecastIconView)
-        forecastIconSetup(view : forecastIconView,icon: "clear")
+        let weather = determineWeatherType(s: forecast.type)
+        forecastIconSetup(view : forecastIconView,icon: BACKGROUND_THEMES[weather]![.ICON]!)
         foreCastDetailsStack.addArrangedSubview(forecastLabel(text: "\(forecast.temp)°"))
         
         layoutSubviews()
@@ -52,6 +53,7 @@ public class ForecastView : UIView {
         let label = UILabel()
         label.textColor = UIColor.white
         label.text = value;
+        label.font = weather_font(size: 20, .regular)
         return label;
     }
     
@@ -71,7 +73,6 @@ public class ForecastView : UIView {
         iconView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         iconView.widthAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
         iconView.heightAnchor.constraint(lessThanOrEqualToConstant: 60).isActive = true
-        
         
     }
     

@@ -17,9 +17,6 @@ public struct CurrentWeather {
     var weatherType : WeatherType
     var cloudPercentage : Double
     
-    
-    
-    
 }
 
 public struct Forecast{

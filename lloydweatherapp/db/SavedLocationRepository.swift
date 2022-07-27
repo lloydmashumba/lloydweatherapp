@@ -12,6 +12,7 @@ protocol SavedLocationRepository{
     
     func getAllSavedLocations(handler :([SavedLocation])->Void)
     func saveLocationFor(lat: Double,lon : Double,weather : CurrentWeather,handler: (Bool) -> Void)
+    func deleteLocation(location : SavedLocation,handler: (Bool) -> Void)
 }
 
 class SavedLocationService : SavedLocationRepository{
@@ -35,15 +36,32 @@ class SavedLocationService : SavedLocationRepository{
     
     func saveLocationFor(lat: Double, lon: Double, weather: CurrentWeather, handler: (Bool) -> Void) {
         do {
-            let location = SavedLocation(context: context)
-            location.city = weather.city
-            location.lat = lat
-            location.lon = lon
-            location.id = UUID()
-            location.savedOn = Date()
+            let request = SavedLocation.fetchRequest()
+            request.predicate = NSPredicate(format: "city = %@",weather.city)
+            let locatons = try context.fetch(request)
+            print(locatons.count)
+            var location : SavedLocation?  = nil
+            if(locatons.count > 0){location = locatons[0]}
+            else {location = SavedLocation(context: context)}
+            
+            location!.city = weather.city
+            location!.lat = lat
+            location!.lon = lon
+            location!.id = UUID()
+            location!.savedOn = Date()
             try context.save()
             handler(true)
         } catch{
+            handler(false)
+        }
+    }
+    
+    func deleteLocation(location: SavedLocation, handler: (Bool) -> Void) {
+        do{
+            context.delete(location)
+            try context.save()
+            handler(true)
+        }catch{
             handler(false)
         }
     }

@@ -21,7 +21,7 @@ let CURRENT_WEATHER = "weather"
 let FORECAST = "forecast"
 
 // MARK : ENUMS
-enum BACKGROUND_ASSET {case IMAGE,COLOR}
+enum BACKGROUND_ASSET {case IMAGE,ICON,COLOR}
 
 
 // MARK : LIST ITEMS
@@ -31,20 +31,34 @@ let BACKGROUND_THEMES : [WeatherType:[BACKGROUND_ASSET:String]] =
     .CLOUDY:
         [
             .IMAGE : "forest_cloudy",
+            .ICON : "partlysunny",
             .COLOR : "forest_cloudy_color"
         ],
     .RAINNY :
         [
             .IMAGE: "forest_rainy",
+            .ICON: "rainny",
             .COLOR : "forest_rainy_color"
         ],
     .SUNNY:
         [
-            .IMAGE : "forest_sunny",
+            .IMAGE: "forest_sunny",
+            .ICON : "clear",
             .COLOR : "forest_sunny_color"
+        ],
+    .DEFAULT:
+        [
+            .IMAGE : "forest_cloudy",
+            .COLOR : "forest_cloudy_color"
         ]
-    
 ]
 
+// Mark : Func
+func weather_font(size : CGFloat, _ weight : UIFont.Weight) -> UIFont{
+    return UIFont.monospacedSystemFont(ofSize: size, weight: weight)
+}
 
+func determineWeatherType(s : String) -> WeatherType{
+    return s == "Clouds" ? .CLOUDY : s == "Clear" ? .SUNNY : .RAINNY
+}
 
