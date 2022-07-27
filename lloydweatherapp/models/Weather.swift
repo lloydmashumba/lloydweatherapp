@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//current weather model
 public struct CurrentWeather {
     
     var city : String
@@ -18,7 +18,7 @@ public struct CurrentWeather {
     var cloudPercentage : Double
     
 }
-
+//Forcast Model
 public struct Forecast{
     
     var day : Date

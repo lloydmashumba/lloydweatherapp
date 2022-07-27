@@ -9,12 +9,12 @@ import Foundation
 
 
 enum WeatherType {case CLOUDY,SUNNY,RAINNY,DEFAULT}
-
+//Implements Call Servive
 public class WeatherCalls : CallService{
     
     static let shared = WeatherCalls()
     
-    
+    //runs urls and return response throught the complete closer
     func forecast(latitude lat: Double, longitude lon: Double, complete: @escaping (Any?) -> Void) {
         let urlString = String(format: "%@%@?units=metric&lat=%f&lon=%f&appid=%@",
                                BASE_URL,FORECAST,lat,lon,API_KEY)
@@ -51,7 +51,7 @@ public class WeatherCalls : CallService{
                 }
         }
     }
-    
+    //runs urls and return response throught the complete closer
     public func currentWeather(latitude lat : Double,longitude lon: Double, complete : @escaping (Any?)->Void){
         
         let urlString = String(format: "%@%@?units=metric&lat=%f&lon=%f&appid=%@",

@@ -24,7 +24,7 @@ class SavedLocationService : SavedLocationRepository{
     private var context : NSManagedObjectContext {
         return appdelegate.persistentContainer.viewContext
     }
-    
+    //get saved location data
     func getAllSavedLocations(handler : ([SavedLocation])->Void) {
         do{
             handler(try context.fetch(SavedLocation.fetchRequest()))
@@ -33,7 +33,7 @@ class SavedLocationService : SavedLocationRepository{
         }
     }
     
-    
+    //save location update if exists
     func saveLocationFor(lat: Double, lon: Double, weather: CurrentWeather, handler: (Bool) -> Void) {
         do {
             let request = SavedLocation.fetchRequest()
@@ -55,7 +55,7 @@ class SavedLocationService : SavedLocationRepository{
             handler(false)
         }
     }
-    
+    //delete location data
     func deleteLocation(location: SavedLocation, handler: (Bool) -> Void) {
         do{
             context.delete(location)

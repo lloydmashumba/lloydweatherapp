@@ -17,7 +17,7 @@ protocol CallService {
 
 extension CallService{
     
-    
+    //dynamic json call used by call service listener
     internal func jsonCall(_ url :  String,handler done : @escaping (Any?)->Void){
         let url = URL(string: url)
         

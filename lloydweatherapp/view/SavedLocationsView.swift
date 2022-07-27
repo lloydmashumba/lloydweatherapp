@@ -7,18 +7,21 @@
 
 import UIKit
 
+//SavedLocationsView is displayed on the SavedListVC table view cell
 class SavedLocationsView : UIView {
     
     
-    
+    //accepts saved location for display
     init(frame: CGRect,location : SavedLocation) {
         super.init(frame: frame)
         backgroundColor = .clear
         addSubview(mainHorizontalStackView(location: location))
     }
     
-    
+    //setting up the view
     func mainHorizontalStackView(location : SavedLocation) -> UIStackView{
+        
+        //based on location data
         let mainStack = UIStackView()
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         mainStack.frame = bounds

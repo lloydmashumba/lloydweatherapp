@@ -7,11 +7,12 @@
 
 import UIKit
 
+//Implemented by a state that wants to perform an action based on the SavedListVC Interactions
 protocol SavedListDelegate {
     func didSelectLocation(location : SavedLocation)
 }
 
-
+//A viewcontroller that displays and manipulated save locations
 class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var bar: UINavigationBar!
     
@@ -46,15 +47,21 @@ class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     }
     
     
-    
+    //dismis view on button click
     @IBAction func closeTapped(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    //number of cells based on count
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locationList.count;
     }
     
+    /**
+    MARK : Saved location celll
+    - cell adds SavedLocationsView to it's content view
+    - initializes it  with the SavedLocation
+     */
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let location = locationList[indexPath.item]
@@ -67,6 +74,8 @@ class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         return cell
             
     }
+    
+    //selecting the desired location
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -74,10 +83,12 @@ class SavedListVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             self.delegate.didSelectLocation(location: locationList[indexPath.row])
         }
     }
-    
+    //fixed height for the location content
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    
+    //deleting and reloading contents of the saved location db
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
             locationRepository.deleteLocation(location:locationList[indexPath.row]){
